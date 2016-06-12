@@ -5,13 +5,13 @@ Easily convert units with Sass.
 ## 0. Install
 
 ```
-npm install sass-units-transform --save-dev
+npm install sass-units-translate --save-dev
 ```
 
 or
 
 ```
-bower install sass-units-transform --save-dev
+bower install sass-units-translate --save-dev
 ```
 
 Import into your stylesheet.
