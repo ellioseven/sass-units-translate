@@ -17,5 +17,23 @@
     "sass-true": "^2.0.3",
     "sassdoc": "^2.1.20",
     "sassdoc-theme-markdown": "^2.0.2"
-  }
+  },
+  "directories": {
+    "doc": "doc",
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ellioseven/sass-units-translate.git"
+  },
+  "keywords": [
+    "sass",
+    "scss"
+  ],
+  "author": "Elliot Mitchum <elliot.mitchum@ellioseven.com>",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/ellioseven/sass-units-translate/issues"
+  },
+  "homepage": "https://github.com/ellioseven/sass-units-translate#readme"
 }
