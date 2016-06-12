@@ -62,11 +62,11 @@ Convert from em, rem, percent, relative and px.
 
 ```scss
 h1 {
-  $font-size: em(32px, 2em); // 16px
-  $font-size: rem(32px, 2rem); // 16px
-  $font-size: percent(32px, 200%); // 16px
-  $font-size: rel(32px, 2); // 16px
-  $font-size: px(2em, 32px); // 16px
+  $font-size: em(32px, 1em); // 1em
+  $font-size: rem(32px, 2rem); // 1rem
+  $font-size: percent(32px, 200%); // 100%
+  $font-size: rel(32px, 2); // 1
+  $font-size: px(2em, 32px); // 32ox
 }
 ```
 
