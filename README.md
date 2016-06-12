@@ -54,4 +54,4 @@ h1 {
 
 ---
 
-[View generated documentation](https://github.com/ellioseven/sass-units-transform/tree/unit-map/doc)
+[View generated documentation](https://github.com/ellioseven/sass-units-translate/tree/master/doc)
