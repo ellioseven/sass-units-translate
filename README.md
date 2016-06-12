@@ -14,6 +14,12 @@ or
 bower install sass-units-transform --save-dev
 ```
 
+Import into your stylesheet.
+
+```sass
+@import "sass-units-translate"
+```
+
 ## 1. Set global base font size.
 
 ```scss
