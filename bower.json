@@ -6,7 +6,7 @@
   "authors": [
     "Elliot Mitchum <elliot.mitchum@ellioseven.com>"
   ],
-  "license": "GPL",
+  "license": "GPL-3.0",
   "keywords": [
     "sass",
     "scss"
