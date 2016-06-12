@@ -66,7 +66,7 @@ h1 {
   $font-size: rem(32px, 2rem); // 1rem
   $font-size: percent(32px, 200%); // 100%
   $font-size: rel(32px, 2); // 1
-  $font-size: px(2em, 32px); // 32ox
+  $font-size: px(2em, 32px); // 32px
 }
 ```
 
