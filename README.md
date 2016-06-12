@@ -2,6 +2,18 @@
 
 Easily convert units with Sass.
 
+## 0. Install
+
+```
+npm install sass-units-transform --save-dev
+``
+
+or
+
+```
+bower install sass-units-transform --save-dev
+```
+
 ## 1. Set global base font size.
 
 ```scss
