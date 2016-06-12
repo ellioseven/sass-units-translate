@@ -1,0 +1,539 @@
+@include test-module('Unit: Calculate Base Ratio: Percent') {
+
+  @include test('[_sut-unit-calc-base-ratio-percent] Compare 200% of root') {
+    $test: _sut-unit-calc-base-ratio-percent(200);
+    $expect: 2;
+    @include assert-equal($test, $expect);
+  }
+
+  @include test('[_sut-unit-calc-base-ratio-percent] Compare 50% of root') {
+    $test: _sut-unit-calc-base-ratio-percent(50);
+    $expect: .5;
+    @include assert-equal($test, $expect);
+  }
+
+  @include test('[_sut-unit-calc-base-ratio-percent] Compare 100% of root') {
+    $test: _sut-unit-calc-base-ratio-percent(100);
+    $expect: 1;
+    @include assert-equal($test, $expect);
+  }
+
+  @include test('[_sut-unit-calc-base-ratio-percent] Compare 0% of root') {
+    $test: _sut-unit-calc-base-ratio-percent(0);
+    $expect: 0;
+    @include assert-equal($test, $expect);
+  }
+
+}
+
+@include test-module('Unit: Calculate Base Ratio: Absolute') {
+
+  @include test('[_sut-unit-calc-base-ratio-absolute] Compare 32 of root') {
+    $test: _sut-unit-calc-base-ratio-absolute(32);
+    $expect: 2;
+    @include assert-equal($test, $expect);
+  }
+
+  @include test('[_sut-unit-calc-base-ratio-absolute] Compare 8 of root') {
+    $test: _sut-unit-calc-base-ratio-absolute(8);
+    $expect: .5;
+    @include assert-equal($test, $expect);
+  }
+
+  @include test('[_sut-unit-calc-base-ratio-absolute] Compare 16 of root') {
+    $test: _sut-unit-calc-base-ratio-absolute(16);
+    $expect: 1;
+    @include assert-equal($test, $expect);
+  }
+
+  @include test('[_sut-unit-calc-base-ratio-absolute] Compare 0 of root') {
+    $test: _sut-unit-calc-base-ratio-absolute(0);
+    $expect: 0;
+    @include assert-equal($test, $expect);
+  }
+
+}
+
+@include test-module('Unit: Calculate Base Ratio: Relative') {
+
+  @include test('[_sut-unit-calc-base-ratio-relative] Compare 2 with root') {
+    $test: _sut-unit-calc-base-ratio-relative(2);
+    $expect: 2;
+    @include assert-equal($test, $expect);
+  }
+
+  @include test('[_sut-unit-calc-base-ratio-relative] Compare .5 of root') {
+    $test: _sut-unit-calc-base-ratio-relative(.5);
+    $expect: .5;
+    @include assert-equal($test, $expect);
+  }
+
+  @include test('[_sut-unit-calc-base-ratio-relative] Compare 1 of root') {
+    $test: _sut-unit-calc-base-ratio-relative(1);
+    $expect: 1;
+    @include assert-equal($test, $expect);
+  }
+
+  @include test('[_sut-unit-calc-base-ratio-relative] Compare 0 of root') {
+    $test: _sut-unit-calc-base-ratio-relative(0);
+    $expect: 0;
+    @include assert-equal($test, $expect);
+  }
+
+}
+
+@include test-module('Unit: Calculate Value: Percent') {
+
+  @include test('[_sut-unit-calc-value-percent] Calculate percent ratio of 1 with a base ratio of 1') {
+    $test: _sut-unit-calc-value-percent(1, 1);
+    $expect: 100;
+    @include assert-equal($test, $expect);
+  }
+
+  @include test('[_sut-unit-calc-value-percent] Calculate percent ratio of 2 with a base ratio of 1') {
+    $test: _sut-unit-calc-value-percent(2, 1);
+    $expect: 200;
+    @include assert-equal($test, $expect);
+  }
+
+  @include test('[_sut-unit-calc-value-percent] Calculate percent ratio of .5 with a base ratio of 1') {
+    $test: _sut-unit-calc-value-percent(.5, 1);
+    $expect: 50;
+    @include assert-equal($test, $expect);
+  }
+
+}
+
+@include test-module('Unit: Calculate Value: Absolute') {
+
+  @include test('[_sut-unit-calc-value-absolute] Calculate absolute ratio of 1 with a base ratio of 1') {
+    $test: _sut-unit-calc-value-absolute(1, 1);
+    $expect: 16;
+    @include assert-equal($test, $expect);
+  }
+
+  @include test('[_sut-unit-calc-value-absolute] Calculate absolute ratio of 2 with a base ratio of 1') {
+    $test: _sut-unit-calc-value-absolute(2, 1);
+    $expect: 32;
+    @include assert-equal($test, $expect);
+  }
+
+  @include test('[_sut-unit-calc-value-absolute] Calculate absolute ratio of .5 with a base ratio of 1') {
+    $test: _sut-unit-calc-value-absolute(.5, 1);
+    $expect: 8;
+    @include assert-equal($test, $expect);
+  }
+
+}
+
+@include test-module('Unit: Calculate Value: Relative') {
+
+  @include test('[_sut-unit-calc-value-relative] Calculate relative ratio of 1 with a base ratio of 1') {
+    $test: _sut-unit-calc-value-relative(1, 1);
+    $expect: 1;
+    @include assert-equal($test, $expect);
+  }
+
+  @include test('[_sut-unit-calc-value-relative] Calculate relative ratio of 2 with a base ratio of 2') {
+    $test: _sut-unit-calc-value-relative(2, 1);
+    $expect: 2;
+    @include assert-equal($test, $expect);
+  }
+
+  @include test('[_sut-unit-calc-value-relative] Calculate relative ratio of .5 with a base ratio of 1') {
+    $test: _sut-unit-calc-value-relative(.5, 1);
+    $expect: .5;
+    @include assert-equal($test, $expect);
+  }
+
+}
+
+@include test-module('Unit: Calculate Base Ratio') {
+
+  @include test('[_sut-unit-calc-base-ratio] Calculate base ratio for 32px') {
+    $test: _sut-unit-calc-base-ratio(32px);
+    $expect: 2;
+    @include assert-equal($test, $expect);
+  }
+
+  @include test('[_sut-unit-calc-base-ratio] Calculate base ratio for 2em') {
+    $test: _sut-unit-calc-base-ratio(2em);
+    $expect: 2;
+    @include assert-equal($test, $expect);
+  }
+
+  @include test('[_sut-unit-calc-base-ratio] Calculate base ratio for 200%') {
+    $test: _sut-unit-calc-base-ratio(200%);
+    $expect: 2;
+    @include assert-equal($test, $expect);
+  }
+
+  @include test('[_sut-unit-calc-base-ratio] Calculate base ratio for 2') {
+    $test: _sut-unit-calc-base-ratio(2);
+    $expect: 2;
+    @include assert-equal($test, $expect);
+  }
+
+}
+
+@include test-module('Unit: Calculate Value') {
+
+  @include test('[_sut-unit-calc-value] Calculate and convert 32px into em') {
+    $test: _sut-unit-calc-value(em, 32px);
+    $expect: 2em;
+    @include assert-equal($test, $expect);
+  }
+
+  @include test('[_sut-unit-calc-value] Calculate and convert 32px into px') {
+    $test: _sut-unit-calc-value(px, 32px);
+    $expect: 32px;
+    @include assert-equal($test, $expect);
+  }
+
+  @include test('[_sut-unit-calc-value] Calculate and convert 32px into percentage') {
+    $test: _sut-unit-calc-value(percent, 32px);
+    $expect: 200%;
+    @include assert-equal($test, $expect);
+  }
+
+  @include test('[_sut-unit-calc-value] Calculate and convert 32px into em - 2em base') {
+    $test: _sut-unit-calc-value(em, 32px, 2em);
+    $expect: 1em;
+    @include assert-equal($test, $expect);
+  }
+
+  @include test('[_sut-unit-calc-value] Calculate and convert 32px into px - 2em base') {
+    $test: _sut-unit-calc-value(px, 32px, 2em);
+    $expect: 32px;
+    @include assert-equal($test, $expect);
+  }
+
+  @include test('[_sut-unit-calc-value] Calculate and convert 32px into percentage - 2em base') {
+    $test: _sut-unit-calc-value(percent, 32px, 2em);
+    $expect: 100%;
+    @include assert-equal($test, $expect);
+  }
+
+  @include test('[_sut-unit-calc-value] Calculate and convert 32px into em - 200% base') {
+    $test: _sut-unit-calc-value(em, 32px, 200%);
+    $expect: 1em;
+    @include assert-equal($test, $expect);
+  }
+
+  @include test('[_sut-unit-calc-value] Calculate and convert 32px into px - 200% base') {
+    $test: _sut-unit-calc-value(px, 32px, 200%);
+    $expect: 32px;
+    @include assert-equal($test, $expect);
+  }
+
+  @include test('[_sut-unit-calc-value] Calculate and convert 32px into percentage - 200% base') {
+    $test: _sut-unit-calc-value(percent, 32px, 200%);
+    $expect: 100%;
+    @include assert-equal($test, $expect);
+  }
+
+  @include test('[_sut-unit-calc-value] Calculate and convert (32px 2em 2rem 200% 2) into ems') {
+    $test: _sut-unit-calc-value(em, 32px 2em 2rem 200% 2);
+    $expect: 2em 2em 2em 2em 2em;
+    @include assert-equal($test, $expect);
+  }
+
+  @include test('[_sut-unit-calc-value] Calculate and convert (32px 2em 2rem 200% 2) into px') {
+    $test: _sut-unit-calc-value(px, 32px 2em 2rem 200% 2);
+    $expect: 32px 32px 32px 32px 32px;
+    @include assert-equal($test, $expect);
+  }
+
+  @include test('[_sut-unit-calc-value] Calculate and convert (32px 2em 2rem 200% 2) into percent') {
+    $test: _sut-unit-calc-value(percent, 32px 2em 2rem 200% 2);
+    $expect: 200% 200% 200% 200% 200%;
+    @include assert-equal($test, $expect);
+  }
+
+  @include test('[_sut-unit-calc-value] Calculate and convert (32px 2em 2rem 200% 2) into relative') {
+    $test: _sut-unit-calc-value(relative, 32px 2em 2rem 200% 2);
+    $expect: 2 2 2 2 2;
+    @include assert-equal($test, $expect);
+  }
+
+  @include test('[_sut-unit-calc-value] Calculate and convert (32px 2em 2rem 200% 2) into ems - 64px base') {
+    $test: _sut-unit-calc-value(em, 32px 1em 2rem 200% 2, 64px);
+    $expect: .5em 1em .5em .5em .5em;
+    @include assert-equal($test, $expect);
+  }
+
+  @include test('[_sut-unit-calc-value] Calculate and convert (32px 2em 2rem 200% 2) into ems - 4em base') {
+    $test: _sut-unit-calc-value(em, 32px 1em 2rem 200% 2, 4em);
+    $expect: .5em 1em .5em .5em .5em;
+    @include assert-equal($test, $expect);
+  }
+
+  @include test('[_sut-unit-calc-value] Calculate and convert (32px 2em 2rem 200% 2) into ems - 4 base') {
+    $test: _sut-unit-calc-value(em, 32px 1em 2rem 200% 2, 4);
+    $expect: .5em 1em .5em .5em .5em;
+    @include assert-equal($test, $expect);
+  }
+
+  @include test('[_sut-unit-calc-value] Calculate and convert (32px 2em 2rem 200% 2) into ems - 400% base') {
+    $test: _sut-unit-calc-value(em, 32px 1em 2rem 200% 2, 400%);
+    $expect: .5em 1em .5em .5em .5em;
+    @include assert-equal($test, $expect);
+  }
+
+}
+
+@include test-module('Unit: Calculate em') {
+
+  @include test('[sut-unit-em] Calculate and convert 32px to em') {
+    $test: sut-unit-em(32px);
+    $expect: 2em;
+    @include assert-equal($test, $expect);
+  }
+
+  @include test('[sut-unit-em] Calculate and convert 64px to em - 32px base') {
+    $test: sut-unit-em(64px, 32px);
+    $expect: 2em;
+    @include assert-equal($test, $expect);
+  }
+
+  @include test('[sut-unit-em] Calculate and convert 64px to em - 200% base') {
+    $test: sut-unit-em(64px, 200%);
+    $expect: 2em;
+    @include assert-equal($test, $expect);
+  }
+
+  @include test('[sut-unit-em] Calculate and convert 64px to em - 2 base') {
+    $test: sut-unit-em(64px, 2);
+    $expect: 2em;
+    @include assert-equal($test, $expect);
+  }
+
+  @include test('[sut-unit-em] Calculate and convert 64px to em - 2em base') {
+    $test: sut-unit-em(64px, 2em);
+    $expect: 2em;
+    @include assert-equal($test, $expect);
+  }
+
+  @include test('[sut-unit-em] Calculate and convert (32px 2em 2rem 200% 2) to em') {
+    $test: sut-unit-em((32px 2em 2rem 200% 2));
+    $expect: 2em 2em 2em 2em 2em;
+    @include assert-equal($test, $expect);
+  }
+
+  @include test('[sut-unit-em] Calculate and convert (32px 2em 2rem 200% 2) to em - 64px base') {
+    $test: sut-unit-em((32px 2em 2rem 200% 2), 64px);
+    $expect: .5em 2em .5em .5em .5em;
+    @include assert-equal($test, $expect);
+  }
+
+  @include test('[sut-unit-em] Calculate and convert (32px 2em 2rem 200% 2) to em - 4em base') {
+    $test: sut-unit-em((32px 2em 2rem 200% 2), 4em);
+    $expect: .5em 2em .5em .5em .5em;
+    @include assert-equal($test, $expect);
+  }
+
+  @include test('[sut-unit-em] Calculate and convert (32px 2em 2rem 200% 2) to em - 4 base') {
+    $test: sut-unit-em((32px 2em 2rem 200% 2), 4);
+    $expect: .5em 2em .5em .5em .5em;
+    @include assert-equal($test, $expect);
+  }
+
+  @include test('[sut-unit-em] Calculate and convert (32px 2em 2rem 200% 2) to em - 400% base') {
+    $test: sut-unit-em((32px 2em 2rem 200% 2), 400%);
+    $expect: .5em 2em .5em .5em .5em;
+    @include assert-equal($test, $expect);
+  }
+
+}
+
+@include test-module('Unit: Calculate px') {
+
+  @include test('[sut-unit-px] Calculate and convert 2em to px') {
+    $test: sut-unit-px(2em);
+    $expect: 32px;
+    @include assert-equal($test, $expect);
+  }
+
+  @include test('[sut-unit-px] Calculate and convert 2em to px - 32px base') {
+    $test: sut-unit-px(2em, 32px);
+    $expect: 64px;
+    @include assert-equal($test, $expect);
+  }
+
+  @include test('[sut-unit-px] Calculate and convert 4em to px - 200% base') {
+    $test: sut-unit-px(4em, 200%);
+    $expect: 128px;
+    @include assert-equal($test, $expect);
+  }
+
+  @include test('[sut-unit-px] Calculate and convert 4em to px - 2 base') {
+    $test: sut-unit-px(4em, 2);
+    $expect: 128px;
+    @include assert-equal($test, $expect);
+  }
+
+  @include test('[sut-unit-px] Calculate and convert 4em to px - 2em base') {
+    $test: sut-unit-px(4em, 2em);
+    $expect: 128px;
+    @include assert-equal($test, $expect);
+  }
+
+  @include test('[sut-unit-px] Calculate and convert (32px 2em 2rem 200% 2) to px') {
+    $test: sut-unit-px((32px 2em 2rem 200% 2));
+    $expect: 32px 32px 32px 32px 32px;
+    @include assert-equal($test, $expect);
+  }
+
+  @include test('[sut-unit-px] Calculate and convert (32px 2em 2rem 200% 2) to px - 64px base') {
+    $test: sut-unit-px((32px 2em 2rem 200% 2), 64px);
+    $expect: 32px 128px 128px 128px 128px;
+    @include assert-equal($test, $expect);
+  }
+
+  @include test('[sut-unit-px] Calculate and convert (32px 2em 2rem 200% 2) to px - 4em base') {
+    $test: sut-unit-px((32px 2em 2rem 200% 2), 4em);
+    $expect: 32px 128px 128px 128px 128px;
+    @include assert-equal($test, $expect);
+  }
+
+  @include test('[sut-unit-px] Calculate and convert (32px 2em 2rem 200% 2) to em - 4 base') {
+    $test: sut-unit-px((32px 2em 2rem 200% 2), 4);
+    $expect: 32px 128px 128px 128px 128px;
+    @include assert-equal($test, $expect);
+  }
+
+  @include test('[sut-unit-px] Calculate and convert (32px 2em 2rem 200% 2) to em - 400% base') {
+    $test: sut-unit-px((32px 2em 2rem 200% 2), 400%);
+    $expect: 32px 128px 128px 128px 128px;
+    @include assert-equal($test, $expect);
+  }
+
+}
+
+@include test-module('Unit: Calculate relative') {
+
+  @include test('[sut-unit-rel] Calculate and convert 32px to relative') {
+    $test: sut-unit-rel(32px);
+    $expect: 2;
+    @include assert-equal($test, $expect);
+  }
+
+  @include test('[sut-unit-rel] Calculate and convert 64px to relative - 32px base') {
+    $test: sut-unit-rel(64px, 32px);
+    $expect: 2;
+    @include assert-equal($test, $expect);
+  }
+
+  @include test('[sut-unit-rel] Calculate and convert 64px to relative - 200% base') {
+    $test: sut-unit-rel(64px, 200%);
+    $expect: 2;
+    @include assert-equal($test, $expect);
+  }
+
+  @include test('[sut-unit-rel] Calculate and convert 64px to relative - 2 base') {
+    $test: sut-unit-rel(64px, 2);
+    $expect: 2;
+    @include assert-equal($test, $expect);
+  }
+
+  @include test('[sut-unit-rel] Calculate and convert 64px to relative - 2em base') {
+    $test: sut-unit-rel(64px, 2em);
+    $expect: 2;
+    @include assert-equal($test, $expect);
+  }
+
+  @include test('[sut-unit-rel] Calculate and convert (32px 2em 2rem 200% 2) to relative') {
+    $test: sut-unit-rel((32px 2em 2rem 200% 2));
+    $expect: 2 2 2 2 2;
+    @include assert-equal($test, $expect);
+  }
+
+  @include test('[sut-unit-rel] Calculate and convert (32px 2em 2rem 200% 2) to relative - 64px base') {
+    $test: sut-unit-rel((32px 2em 2rem 200% 2), 64px);
+    $expect: .5 .5 .5 .5 2;
+    @include assert-equal($test, $expect);
+  }
+
+  @include test('[sut-unit-rel] Calculate and convert (32px 2em 2rem 200% 2) to relative - 4em base') {
+    $test: sut-unit-rel((32px 2em 2rem 200% 2), 4em);
+    $expect: .5 .5 .5 .5 2;
+    @include assert-equal($test, $expect);
+  }
+
+  @include test('[sut-unit-rel] Calculate and convert (32px 2em 2rem 200% 2) to relative - 4 base') {
+    $test: sut-unit-rel((32px 2em 2rem 200% 2), 4);
+    $expect: .5 .5 .5 .5 2;
+    @include assert-equal($test, $expect);
+  }
+
+  @include test('[sut-unit-rel] Calculate and convert (32px 2em 2rem 200% 2) to relative - 400% base') {
+    $test: sut-unit-rel((32px 2em 2rem 200% 2), 400%);
+    $expect: .5 .5 .5 .5 2;
+    @include assert-equal($test, $expect);
+  }
+
+}
+
+@include test-module('Unit: Calculate relative') {
+
+  @include test('[sut-unit-percent] Calculate and convert 32px to percent') {
+    $test: sut-unit-percent(32px);
+    $expect: 200%;
+    @include assert-equal($test, $expect);
+  }
+
+  @include test('[sut-unit-percent] Calculate and convert 64px to percent - 32px base') {
+    $test: sut-unit-percent(64px, 32px);
+    $expect: 200%;
+    @include assert-equal($test, $expect);
+  }
+
+  @include test('[sut-unit-percent] Calculate and convert 64px to percent - 200% base') {
+    $test: sut-unit-percent(64px, 200%);
+    $expect: 200%;
+    @include assert-equal($test, $expect);
+  }
+
+  @include test('[sut-unit-percent] Calculate and convert 64px to percent - 2 base') {
+    $test: sut-unit-percent(64px, 2);
+    $expect: 200%;;
+    @include assert-equal($test, $expect);
+  }
+
+  @include test('[sut-unit-percent] Calculate and convert 64px to percent - 2em base') {
+    $test: sut-unit-percent(64px, 2em);
+    $expect: 200%;
+    @include assert-equal($test, $expect);
+  }
+
+  @include test('[sut-unit-percent] Calculate and convert (32px 2em 2rem 200% 2) to percent') {
+    $test: sut-unit-percent((32px 2em 2rem 200% 2));
+    $expect: 200% 200% 200% 200% 200%;
+    @include assert-equal($test, $expect);
+  }
+
+  @include test('[sut-unit-percent] Calculate and convert (32px 2em 2rem 200% 2) to percent - 64px base') {
+    $test: sut-unit-percent((32px 2em 2rem 200% 2), 64px);
+    $expect: 50% 50% 50% 200% 50%;
+    @include assert-equal($test, $expect);
+  }
+
+  @include test('[sut-unit-percent] Calculate and convert (32px 2em 2rem 200% 2) to percent - 4em base') {
+    $test: sut-unit-percent((32px 2em 2rem 200% 2), 4em);
+    $expect: 50% 50% 50% 200% 50%;
+    @include assert-equal($test, $expect);
+  }
+
+  @include test('[sut-unit-percent] Calculate and convert (32px 2em 2rem 200% 2) to percent - 4 base') {
+    $test: sut-unit-percent((32px 2em 2rem 200% 2), 4);
+    $expect: 50% 50% 50% 200% 50%;
+    @include assert-equal($test, $expect);
+  }
+
+  @include test('[sut-unit-percent] Calculate and convert (32px 2em 2rem 200% 2) to percent - 400% base') {
+    $test: sut-unit-percent((32px 2em 2rem 200% 2), 400%);
+    $expect: 50% 50% 50% 200% 50%;
+    @include assert-equal($test, $expect);
+  }
+
+}

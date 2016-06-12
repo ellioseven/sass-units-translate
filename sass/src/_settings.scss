@@ -1,0 +1,62 @@
+////
+/// Settings
+/// Variable data for API.
+/// @group settings
+////
+
+//  @var $_sut-modules
+/// Machine name of module for internals.
+///
+/// @since 1.0.0
+/// @type String
+/// @access private
+
+$_sut-module: sass-units-translate;
+
+//  @var $_sut-units
+/// Map of unit information for internals.
+///
+/// @since 1.0.0
+/// @type Map
+/// @access private
+
+$_sut-units: (
+  px: (
+    type: absolute,
+    value: 1px
+  ),
+  em: (
+    type: relative,
+    value: 1em,
+  ),
+  rem: (
+    type: relative,
+    value: 1rem,
+  ),
+  percent: (
+    type: percent,
+    value: 1%,
+  ),
+  relative: (
+    type: relative,
+    value: 1
+  )
+);
+
+//  @var $_sut-root
+/// Browser root font size.
+///
+/// @since 1.0.0
+/// @type Number
+/// @access private
+
+$_sut-root: 16;
+
+//  @var $_sut-precision
+/// Precision size / cutoff for Sass floats / decimals.
+///
+/// @since 1.0.0
+/// @type Number
+/// @access private
+
+$_sut-precision: 5;

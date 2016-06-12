@@ -1,0 +1,85 @@
+@include test-module('Utilties: Clear Unit') {
+
+  @include test('[sut-clear-unit] Clear px from 24px') {
+    $test: sut-clear-unit(24px);
+    $expect: 24;
+    @include assert-equal($test, $expect);
+  }
+
+  @include test('[sut-clear-unit] Clear unitless 10') {
+    $test: sut-clear-unit(10);
+    $expect: 10;
+    @include assert-equal($test, $expect);
+  }
+
+}
+
+@include test-module('Utilties: Make Unit') {
+
+  $var-px: 24px;
+  $var-em: 24em;
+  $var-rem: 24rem;
+  $var-percent: 24%;
+  $var-relative: 24;
+
+  @include test('[sut-make-unit]: px em rem percent relative to 24px') {
+    $test: (
+      sut-make-unit($var-px, px),
+      sut-make-unit($var-em, px),
+      sut-make-unit($var-rem, px),
+      sut-make-unit($var-percent, px),
+      sut-make-unit($var-relative, px)
+    );
+    $expect: (24px, 24px, 24px, 24px, 24px);
+    @include assert-equal($test, $expect, '');
+  }
+
+  @include test('[sut-make-unit]: px em rem percent relative to 24em') {
+    $test: (
+      sut-make-unit($var-px, em),
+      sut-make-unit($var-em, em),
+      sut-make-unit($var-rem, em),
+      sut-make-unit($var-percent, em),
+      sut-make-unit($var-relative, em)
+    );
+    $expect: (24em, 24em, 24em, 24em, 24em);
+    @include assert-equal($test, $expect);
+  }
+
+  @include test('[sut-make-unit]: px em rem percent relative to 24rem') {
+    $test: (
+      sut-make-unit($var-px, rem),
+      sut-make-unit($var-em, rem),
+      sut-make-unit($var-rem, rem),
+      sut-make-unit($var-percent, rem),
+      sut-make-unit($var-relative, rem)
+    );
+    $expect: (24rem, 24rem, 24rem, 24rem, 24rem);
+    @include assert-equal($test, $expect);
+  }
+
+  @include test('[sut-make-unit]: px em rem percent relative to 24%') {
+    $test: (
+      sut-make-unit($var-px, percent),
+      sut-make-unit($var-em, percent),
+      sut-make-unit($var-rem, percent),
+      sut-make-unit($var-percent, percent) ,
+      sut-make-unit($var-relative, percent)
+    );
+    $expect: (24%, 24%, 24%, 24%, 24%);
+    @include assert-equal($test, $expect);
+  }
+
+  @include test('[sut-make-unit]: px em rem percent relative to 24') {
+    $test: (
+      sut-make-unit($var-px, relative),
+      sut-make-unit($var-em, relative),
+      sut-make-unit($var-rem, relative),
+      sut-make-unit($var-percent, relative),
+      sut-make-unit($var-relative, relative)
+    );
+    $expect: (24, 24, 24, 24, 24);
+    @include assert-equal($test, $expect);
+  }
+
+}

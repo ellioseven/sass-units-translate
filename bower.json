@@ -1,0 +1,22 @@
+{
+  "name": "sass-units-translate",
+  "description": "Easily convert units with Sass.",
+  "version": "1.0.0",
+  "main": "gulpfile.js",
+  "authors": [
+    "Elliot Mitchum <elliot.mitchum@ellioseven.com>"
+  ],
+  "license": "GPL",
+  "keywords": [
+    "sass",
+    "scss"
+  ],
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

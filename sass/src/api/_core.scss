@@ -1,0 +1,51 @@
+////
+/// Core
+/// Utilities for core functions.
+/// @group core
+////
+
+//  @mixin sut-core-set-base
+/// Set global base font size.
+///
+/// @since 1.0.0
+///
+/// @param {Number} $input Number to set for global base font size.
+///
+/// @example scss - Set global base font size to 16px.
+///   @include sut-core-set-base(16px)
+/// @example scss - Set global base font size to 150%.
+///   @include sut-core-set-base(150%)
+/// @example scss - Set global base font size to 1.5em.
+///   @include sut-core-set-base(1.5em)
+/// @example scss - Set global base font size to 2.
+///   @include sut-core-set-base(2)
+
+@mixin sut-core-set-base(
+  $input
+){
+  $_sut-base: _memo('sut', 'base', $input);
+}
+
+//  @function _sit-core-get-base
+/// Get global base font size.
+///
+/// @since 1.0.0
+/// @access private
+///
+/// @throws Set global base font size with '@include sut-core-set-base().
+///
+/// @returns {Number} Global base font size.
+///
+/// @example scss - Get global base font size.
+///   _sut-core-get-base()
+///   // 16px
+
+@function _sut-core-get-base() {
+  $memo: _memo('sut', 'base');
+  @if $memo {
+    @return $memo;
+  } @else {
+    $warn: _sut-warn(core, "Set a base font size with '@include sut-core-set-base()'", init);
+    @return 16px;
+  }
+}

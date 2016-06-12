@@ -1,0 +1,119 @@
+////
+/// Util
+/// Internal utility function.
+/// @group util
+/// @access private
+////
+
+//  @function _sut-warn
+/// Output a warning.
+///
+/// @since 1.0.0
+///
+/// @throws Mixed.
+///
+/// @param {String} $context Contextual name of the warning.
+/// @param {String} $message Message to output to warning.
+/// @param {String} $context-type (function) Type of context, eg: function, mixin, etc.
+///
+/// @returns {Boolean}
+///
+/// @example scss - Output a warning from function.
+///   $warn: _sut-warn('my-function', 'My error message');
+///   // true
+
+@function _sut-warn(
+  $context,
+  $message,
+  $context-type: 'function'
+){
+  @warn ('[#{$_sut-module}][#{$context-type}: #{$context}]: #{$message}');
+  @return true;
+}
+
+//  @function _sut-power.
+/// Returns a powered number by exponent.
+///
+/// @since 1.0.0
+///
+/// @param {Number} $value Base number.
+/// @param {Number} $exponent Base number's exponent.
+///
+/// @returns {Number} Base powered by exponent.
+///
+/// @example scss - Calculate 10 to the power of 3.
+///   _sut-power(10, 3)
+///   // 1000
+
+@function _sut-power(
+  $value,
+  $exponent
+){
+  $_return: 1;
+  @if $exponent >= 1 {
+    @for $i from 1 through $exponent {
+      $_return: $_return * $value;
+    }
+  } @elseif $exponent != 0 {
+    @for $i from $exponent to 0 {
+      $_return: $_return / $value;
+    }
+  }
+  @return $_return;
+}
+
+//  @function _sut-round.
+/// Returns a number rounded to a decimal point.
+///
+/// @since 1.0.0
+///
+/// @throws $decimal exceeds precision of $_sut-precision.
+///
+/// @requires _sut-power
+///
+/// @param {Number} $value Base number.
+/// @param {Number} $decimal Amount of decimal places.
+///
+/// @returns {Number} Rounded number.
+///
+/// @example scss - Round 1.234 to 2 decimal places.
+///   _sut-round(1.234, 2)
+///   // 1.23
+
+@function _sut-round(
+  $value,
+  $decimal
+){
+  @if $decimal > $_sut-precision {
+    $warn: _sut-warn(_sut-round, '#{$decimal} exceeds precison of #{$_sut-precision}');
+  }
+  $exponent: _sut-power(10, $decimal);
+  $_return: round($value * $exponent) / $exponent;
+  @return $_return;
+}
+
+//  @function _sut-unit
+/// Return the name of a unity.
+///
+/// @since 1.0.0
+/// @access private
+///
+/// @param {String} $input Number with unit.
+///
+/// @returns {String} Name of unit.
+///
+/// @example scss - Get unit name of 100%.
+///   _sut-unit(200%)
+///   // percent
+
+@function _sut-unit(
+  $input
+){
+  $_return: unit($input);
+  @if ('%' == $_return) {
+    $_return: percent;
+  } @elseif '' == $_return {
+    $_return: relative;
+  }
+  @return $_return;
+}

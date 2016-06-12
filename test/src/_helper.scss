@@ -1,0 +1,61 @@
+@include test-module('Helper: Power') {
+
+  @include test('[_sut-power] Power 10 by 3') {
+    $test: _sut-power(10, 3);
+    $expect: 1000;
+    @include assert-equal($test, $expect);
+  }
+
+  @include test('[_sut-power] Power 10 by 2') {
+    $test: _sut-power(10, 2);
+    $expect: 100;
+    @include assert-equal($test, $expect);
+  }
+
+  @include test('[_sut-power] Power 10 by 1') {
+    $test: _sut-power(10, 1);
+    $expect: 10;
+    @include assert-equal($test, $expect);
+  }
+
+  @include test('[_sut-power] Power 10 by 0') {
+    $test: _sut-power(10, 0);
+    $expect: 1;
+    @include assert-equal($test, $expect);
+  }
+
+}
+
+@include test-module('Helper: Round') {
+
+  @include test('[_sut-round] Round 12.3456 to 2 decimal places') {
+    $test: _sut-round(12.3456, 2);
+    $expect: 12.35;
+    @include assert-equal($test, $expect);
+  }
+
+  @include test('[_sut-round] Round 12 to 2 decimal places') {
+    $test: _sut-round(12, 2);
+    $expect: 12.00;
+    @include assert-equal($test, $expect);
+  }
+
+  @include test('[_sut-round] Round 12.3456 to 0 decimal places') {
+    $test: _sut-round(12.3456, 0);
+    $expect: 12;
+    @include assert-equal($test, $expect);
+  }
+
+  @include test('[_sut-round] Round 1 to 2 decimal places') {
+    $test: _sut-round(1, 2);
+    $expect: 1.00;
+    @include assert-equal($test, $expect);
+  }
+
+  @include test('[_sut-round] Round 0 to 2 decimal places') {
+    $test: _sut-round(0, 2);
+    $expect: 0.00;
+    @include assert-equal($test, $expect);
+  }
+
+}

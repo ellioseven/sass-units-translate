@@ -1,0 +1,386 @@
+////
+/// Unit
+/// Utilities for working with units.
+/// @group unit
+////
+
+//  @function _sut-unit-calc-base-ratio-percent
+/// Calculate base ratio by percent type number.
+///
+/// @since 1.0.0
+/// @access private
+///
+/// @param {Number} $input Percentage number to compare root.
+///
+/// @returns {Number} $input Base ratio.
+///
+/// @example scss - Compare 200% of root (16).
+///   _sut-unit-calc-base-ratio-percent(200)
+///   // 2
+/// @example scss - Compare 50% of root (16).
+///   _sut-unit-calc-base-ratio-percent(50)
+///   // .5
+
+@function _sut-unit-calc-base-ratio-percent(
+  $input
+){
+  $_return: $input;
+  $_return: $input / 100;
+  @return $_return;
+}
+
+//  @function _sut-unit-calc-base-ratio-absolute
+/// Calculate base ratio by absolute type number.
+///
+/// @since 1.0.0
+/// @access private
+///
+/// @param {Number} $input Absolute number to compare root.
+///
+/// @returns {Number} $input Base ratio.
+///
+/// @example scss - Compare 32px with root (16).
+///   _sut-unit-calc-base-ratio-absolute(32)
+///   // 2
+/// @example scss - Compare 8px of root (16).
+///   _sut-unit-calc-base-ratio-absolute(8)
+///   // .5
+
+@function _sut-unit-calc-base-ratio-absolute(
+  $input
+){
+  $_return: $input;
+  $_return: ($input / $_sut-root);
+  @return $_return;
+}
+
+//  @function _sut-unit-calc-base-ratio-relative
+/// Calculate base ratio by relative type number.
+///
+/// @since 1.0.0
+/// @access private
+///
+/// @param {Number} $input Relative number to compare root.
+///
+/// @returns {Number} $input Base ratio.
+///
+/// @example scss - Compare 2 with root (16).
+///   _sut-unit-calc-base-ratio-relative(2)
+///   // 2
+/// @example scss - Compare .5 of root (16).
+///   _sut-unit-calc-base-ratio-relative(.5)
+///   // .5
+
+@function _sut-unit-calc-base-ratio-relative(
+  $input
+){
+  $_return: $input;
+  @return $_return;
+}
+
+//  @function _sut-unit-calc-value-percent
+/// Calculate percent number by percent ratio and base ratio.
+///
+/// @since 1.0.0
+/// @access private
+///
+/// @param {Number} $input Percent ratio.
+/// @param {Number} $input Base ratio.
+///
+/// @returns {Number} Percent number.
+///
+/// @example scss - Calculate absolute ratio of 100 with a base ratio of 1.
+///   _sut-unit-calc-value-percent(1, 1)
+///   // 100
+/// @example scss - Calculate absolute ratio of 2 with a base ratio of 2.
+///   _sut-unit-calc-value-percent(2, 1)
+///   // 200
+
+@function _sut-unit-calc-value-percent(
+  $input,
+  $base
+){
+  $_return: $input;
+  $_return: ($input / $base) * 100;
+  @return $_return;
+}
+
+//  @function _sut-unit-calc-value-absolute
+/// Calculate absolute number by absolute ratio and base ratio.
+///
+/// @since 1.0.0
+/// @access private
+///
+/// @param {Number} $input Absolute ratio.
+/// @param {Number} $input Base ratio.
+///
+/// @returns {Number} Absolute number.
+///
+/// @example scss - Calculate absolute ratio of 1 with a base ratio of 1.
+///   _sut-unit-calc-value-absolute(1, 1)
+///   // 16
+/// @example scss - Calculate absolute ratio of 2 with a base ratio of 2.
+///   _sut-unit-calc-value-absolute(2, 1)
+///   // 32
+
+@function _sut-unit-calc-value-absolute(
+  $input,
+  $base
+){
+  $_return: ($base * $_sut-root) * $input;
+  @return $_return;
+}
+
+//  @function _sut-unit-calc-value-relative
+/// Calculate relative number by relative ratio and base ratio.
+///
+/// @since 1.0.0
+/// @access private
+///
+/// @param {Number} $input Relatve ratio.
+/// @param {Number} $input Base ratio.
+///
+/// @returns {Number} Relatve number.
+///
+/// @example scss - Calculate relative ratio of 1 with a base ratio of 1.
+///   _sut-unit-calc-value-absolute(1, 1)
+///   // 1
+/// @example scss - Calculate relative ratio of 2 with a base ratio of 2.
+///   _sut-unit-calc-value-absolute(2, 2)
+///   // 1
+
+@function _sut-unit-calc-value-relative(
+  $input,
+  $base
+){
+  $_return: $input;
+  $_return: $input / $base;
+  @return $_return;
+}
+
+//  @function _sut-unit-calc-base
+/// Calculate base ratio.
+///
+/// @since 1.0.0
+/// @access private
+///
+/// @param {Number} $input Number to calculate
+///
+/// @returns {Number} Base ratio for number.
+///
+/// @example scss - Calculate base ratio for 32px.
+///   _sut-unit-calc-base-ratio(32px)
+///   // 2
+/// @example scss - Calculate base ratio for 2em.
+///   _sut-unit-calc-base-ratio(2em)
+///   // 2
+/// @example scss - Calculate base ratio for 200%.
+///   _sut-unit-calc-base-ratio(200%)
+///   // 2
+/// @example scss - Calculate base ratio for 2.
+///   _sut-unit-calc-base-ratio(2)
+///   // 2
+
+@function _sut-unit-calc-base-ratio(
+  $input
+){
+  $_return: $input;
+  $unit: _sut-unit($_return);
+  $type: _get($_sut-units, $unit type);
+  $exec: _sut-unit-calc-base-ratio- + $type;
+  $_return: sut-clear-unit($_return);
+  $_return: call($exec, $_return);
+  @return $_return;
+}
+
+//  @function _sut-unit-calc-value
+/// Calculate and covert a single or list of numbers to another unit.
+///
+/// @since 1.0.0
+/// @access private
+///
+/// @param {String | List} (px|em|rem|percent|relative) $unit Unit to convert number to.
+/// @param {Number} $input Number/s to convert from.
+/// @param {Number} $base Base number to convert from.
+///
+/// @returns {Number | List} Calculated and converted number/s.
+/// 
+/// @example scss - Calculate and convert 32px into em.
+///   _sut-unit-calc-value(em, 32px)
+///   // 2em
+/// @example scss - Calculate and convert (32px 2em 2rem 200% 2) into ems.
+///   _sut-unit-calc-value(em, 32px 2em 2rem 200% 2);
+///   // 2em 2em 2em 2em 2em
+/// @example scss - Calculate and convert 32px with a base of 8px into em.
+///   _sut-unit-calc-value(em, 32px, 8px)
+///   // 4em
+
+@function _sut-unit-calc-value(
+  $unit,
+  $input,
+  $base: _sut-core-get-base()
+){
+  $_return: ();
+  $type: _get($_sut-units, $unit type);
+  $exec: _sut-unit-calc-value- + $type;
+  $base: _sut-unit-calc-base-ratio($base);
+  @each $value in $input {
+    @if _sut-unit($value) == $unit {
+      $_return: _push($_return, $value);
+    } @else {
+      $value: _sut-unit-calc-base-ratio($value);
+      $value: call($exec, $value, $base);
+      $value: sut-make-unit($value, $unit);
+      $_return: _push($_return, $value);
+    }
+  }
+  @if length($_return) == 1 {
+    $_return: nth($_return, 1);
+  }
+  @return $_return;
+}
+
+//  @function th-unit-em
+/// Calculate and convert a single or list of numbers to ems.
+///
+/// @since 1.0.0
+///
+/// @param {Number} $input Number/s to convert from.
+/// @param {Number} $base Base number to convert from.
+///
+/// @returns {Number | List} Calculated and converted number/s.
+///
+/// @example scss - Calculate and convert 32px into em.
+///   sut-unit-em(32px)
+///   // 2em
+/// @example scss - Calculate and convert (32px 2em 2rem 200% 2) into ems.
+///   sut-unit-em(32px 2em 2rem 200% 2);
+///   // 2em 2em 2em 2em 2em
+/// @example scss - Calculate and convert 32px with a base of 8px into em.
+///   sut-unit-em(32px, 8px)
+///   // 4em
+
+@function sut-unit-em(
+  $input,
+  $base: _sut-core-get-base()
+){
+  $_return: $input;
+  $_return: _sut-unit-calc-value(em, $_return, $base);
+  @return $_return;
+}
+
+//  @function th-unit-rem
+/// Calculate and convert a single or list of numbers to rems.
+///
+/// @since 1.0.0
+///
+/// @param {Number} $input Number/s to convert from.
+/// @param {Number} $base Base number to convert from.
+///
+/// @returns {Number | List} Calculated and converted number/s.
+///
+/// @example scss - Calculate and convert 32px into rem.
+///   sut-unit-rem(32px)
+///   // 2rem
+/// @example scss - Calculate and convert (32px 2em 2rem 200% 2) into rems.
+///   sut-unit-rem(32px 2em 2rem 200% 2);
+///   // 2rem 2rem 2rem 2rem 2rem
+/// @example scss - Calculate and convert 32px with a base of 8px into em.
+///   sut-unit-rem(32px, 8px)
+///   // 4rem
+
+@function sut-unit-rem(
+  $input,
+  $base: _sut-core-get-base()
+){
+  $_return: $input;
+  $_return: _sut-unit-calc-value(rem, $_return, $base);
+  @return $_return;
+}
+
+//  @function th-unit-rel
+/// Calculate and convert a single or list of numbers to relative numbers.
+///
+/// @since 1.0.0
+///
+/// @param {Number} $input Number/s to convert from.
+/// @param {Number} $base Base number to convert from.
+///
+/// @returns {Number | List} Calculated and converted number/s.
+///
+/// @example scss - Calculate and convert 32px into a relative number.
+///   sut-unit-rel(32px)
+///   // 2
+/// @example scss - Calculate and convert (32px 2em 2rem 200% 2) into relative numbers.
+///   sut-unit-rel(32px 2em 2rem 200% 2);
+///   // 2 2 2 2 2
+/// @example scss - Calculate and convert 32px with a base of 8px into a relative number.
+///   sut-unit-rel(32px, 8px)
+///   // 4
+
+@function sut-unit-rel(
+  $input,
+  $base: _sut-core-get-base()
+){
+  $_return: $input;
+  $_return: _sut-unit-calc-value(relative, $_return, $base);
+  @return $_return;
+}
+
+//  @function th-unit-px
+/// Calculate and convert a single or list of numbers to px.
+///
+/// @since 1.0.0
+///
+/// @param {Number} $input Number/s to convert from.
+/// @param {Number} $base Base number to convert from.
+///
+/// @returns {Number | List} Calculated and converted number/s.
+///
+/// @example scss - Calculate and convert 2em into to px.
+///   sut-unit-px(2em)
+///   // 32px
+/// @example scss - Calculate and convert (32px 2em 2rem 200% 2) into px.
+///   sut-unit-px(32px 2em 2rem 200% 2);
+///   // 32px 32px 32px 32px 32px
+/// @example scss - Calculate and convert 2em with a base of 8px into a relative number.
+///   sut-unit-px(2em, 8px)
+///   // 16px
+
+@function sut-unit-px(
+  $input,
+  $base: _sut-core-get-base()
+){
+  $_return: $input;
+  $_return: _sut-unit-calc-value(px, $_return, $base);
+  @return $_return;
+}
+
+//  @function th-unit-percent
+/// Calculate and convert a single or list of numbers to percentages.
+///
+/// @since 1.0.0
+///
+/// @param {Number} $input Number/s to convert from.
+/// @param {Number} $base Base number to convert from.
+///
+/// @returns {Number | List} Calculated and converted number/s.
+///
+/// @example scss - Calculate and convert 32px into a percentage.
+///   sut-unit-percent(32px)
+///   // 200%
+/// @example scss - Calculate and convert (32px 2em 2rem 200% 2) into percentages.
+///   sut-unit-percent(32px 2em 2rem 200% 2);
+///   // 200% 200% 200% 200% 200%
+/// @example scss - Calculate and convert 32px with a base of 8px into a percentage.
+///   sut-unit-percent(32px, 8px)
+///   // 400%
+
+@function sut-unit-percent(
+  $input,
+  $base: _sut-core-get-base()
+){
+  $_return: $input;
+  $_return: _sut-unit-calc-value(percent, $_return, $base);
+  @return $_return;
+}

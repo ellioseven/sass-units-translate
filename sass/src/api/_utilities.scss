@@ -1,0 +1,60 @@
+////
+/// Utilities
+/// Common utility functions.
+/// @group utilities
+////
+
+//  @function sut-clear-unit
+/// Strip unit from a number.
+///
+/// @since 1.0.0
+///
+/// @throws $value is not a number.
+///
+/// @param {Number} $value Number to have unit stripped.
+///
+/// @returns {Number} The stripped number.
+///
+/// @example scss - Strip px from 24px.
+///   sut-clear-unit(24px)
+///   // 24
+
+@function sut-clear-unit(
+  $value
+){
+  $_return: $value;
+  $_return: $_return / ($_return * 0 + 1);
+  @return $_return;
+}
+
+//  @function sut-make-unit
+/// Creates a number with a unit.
+///
+/// @since 1.0.0
+///
+/// @throws $value is not a number.
+/// @throws $value is not a supported unit.
+///
+/// @param {Number} $value Number to have unit appended to.
+///
+/// @returns {Number} The number with unit appended.
+///
+/// @example scss - Convert number 24px to em.
+///   th-unit-convert-number(24px, em)
+///   // 24em
+/// @example scss - Convert number 24 to em.
+///   th-unit-convert-number(24, em)
+///   // 24em
+
+@function sut-make-unit(
+  $value,
+  $unit
+){
+  $_return: $value;
+  @if _has($_sut-units, $unit) {
+    $_return: sut-clear-unit($_return) * _get($_sut-units, $unit value);
+  } @else {
+    $warn: _sut-warn(sut-make-unit, '#{$value} is not a supported unit.');
+  }
+  @return $_return;
+}
