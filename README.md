@@ -8,12 +8,6 @@ Easily convert units with Sass.
 npm install sass-units-translate --save-dev
 ```
 
-or
-
-```
-bower install sass-units-translate --save-dev
-```
-
 Import into your stylesheet.
 
 ```sass
