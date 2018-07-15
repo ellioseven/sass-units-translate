@@ -189,7 +189,7 @@
   $type: _get($_sut-units, $unit type);
   $exec: _sut-unit-calc-base-ratio- + $type;
   $_return: sut-clear-unit($_return);
-  $_return: call($exec, $_return);
+  $_return: call(get-function($exec), $_return);
   @return $_return;
 }
 
@@ -204,7 +204,7 @@
 /// @param {Number} $base Base number to convert from.
 ///
 /// @returns {Number | List} Calculated and converted number/s.
-/// 
+///
 /// @example scss - Calculate and convert 32px into em.
 ///   _sut-unit-calc-value(em, 32px)
 ///   // 2em
@@ -229,7 +229,7 @@
       $_return: _push($_return, $value);
     } @else {
       $value: _sut-unit-calc-base-ratio($value);
-      $value: call($exec, $value, $base);
+      $value: call(get-function($exec), $value, $base);
       $value: sut-make-unit($value, $unit);
       $_return: _push($_return, $value);
     }

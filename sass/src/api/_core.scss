@@ -45,7 +45,7 @@
   @if $memo {
     @return $memo;
   } @else {
-    $warn: _sut-warn(core, "Set a base font size with '@include sut-core-set-base()'", init);
+    $warn: _sut-warn(core, 'Set a base font size with `@include sut-core-set-base()`', init);
     @return 16px;
   }
 }
