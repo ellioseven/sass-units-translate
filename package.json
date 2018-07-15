@@ -1,6 +1,6 @@
 {
   "name": "sass-units-translate",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Easily convert units with Sass.",
   "main": "gulpfile.js",
   "scripts": {
